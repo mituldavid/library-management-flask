@@ -11,19 +11,20 @@ A Library Management Web Application built in fulfilment of the [Developer Hirin
    ```sh
    pip install -r requirements.txt
    ```
-2. Setup Database using `setupDB.py`
+2. Setup MySQL and replace host, user, password values in `setupDB.py`, `app.py` and `test.py` as required </br></br>
+3. Create Database and Tables using `setupDB.py`
    ```sh
     cd utils
     python setupDB.py
     cd ..
    ```
-3. Run app
+4. Run app
    ```sh
    python app.py
    ```
-   
 
 ## **Screenshots:**
+
 ![1](https://user-images.githubusercontent.com/49085834/121894715-142b1900-cd3d-11eb-8e69-9b75cb96a6fe.png)
 ![2](https://user-images.githubusercontent.com/49085834/121894744-1db48100-cd3d-11eb-8025-470a3bf281a8.png)
 ![3](https://user-images.githubusercontent.com/49085834/121894765-23aa6200-cd3d-11eb-9424-6f0ce711c222.png)
@@ -41,5 +42,3 @@ A Library Management Web Application built in fulfilment of the [Developer Hirin
 ![10 4](https://user-images.githubusercontent.com/49085834/121895357-c06cff80-cd3d-11eb-99f6-25a86a85dcea.png)
 ![Search](https://user-images.githubusercontent.com/49085834/121896734-40479980-cd3f-11eb-8e78-570c25801596.png)
 ![Report](https://user-images.githubusercontent.com/49085834/121896485-f8c10d80-cd3e-11eb-9ef9-c06db4ea6980.png)
-
-
