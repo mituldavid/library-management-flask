@@ -1,0 +1,11 @@
+<!--https://flask.palletsprojects.com/en/2.0.x/patterns/wtforms/-->
+
+{% macro render_field(field) %}
+{{ field.label }}
+{{ field(**kwargs)|safe }}
+{% if field.errors %}
+{% for error in field.errors %}
+<div class="help-text-inline alert alert-warning" style="margin-top:10px; padding: 8px;">{{ error }}</div>
+{% endfor %}
+{% endif %}
+{% endmacro %}

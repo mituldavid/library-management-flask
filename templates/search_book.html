@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+{% block body %}
+<br>
+<h1>Search for a Book</h1>
+{% from "includes/_formhelpers.html" import render_field %}
+<form method="POST" action="">
+    <div class="form-group">
+        {{render_field(form.title, class_="form-control")}}
+    </div><br>
+    <div class="form-group">
+        {{render_field(form.author, class_="form-control")}}
+    </div><br>
+    <p><button type="submit" class="btn btn-primary" value="Submit">Submit</button></p>
+</form>
+{% if books %}
+<br>
+<h1>Search Results: </h1>
+<hr>
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Book ID</th>
+            <th>Title</th>
+            <th>Author(s)</th>
+            <th>Total No. of Books</th>
+            <th>Books Available to Rent</th>
+            <th>Rented Count</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr style="cursor:pointer;">
+            <td><a href="/book/{{book.id}}" class="btn btn-dark pull-right">{{"{:05d}".format(book.id)}}</a></td>
+            <td onclick="window.location='/book/{{book.id}}';">{{book.title}}</td>
+            <td onclick="window.location='/book/{{book.id}}';">{{book.author}}</td>
+            <td onclick="window.location='/book/{{book.id}}';">{{book.total_quantity}}</td>
+            <td onclick="window.location='/book/{{book.id}}';">{{book.available_quantity}}</td>
+            <td onclick="window.location='/book/{{book.id}}';">{{book.rented_count}}</td>
+            <td><a href="edit_book/{{book.id}}" class="btn btn-primary pull-right">Edit</a></td>
+            <td>
+                <form action="{{url_for('delete_book', id=book.id)}}" method="POST"
+                    onsubmit="return confirm('Are you sure you want to delete this book?');">
+                    <input type="hidden" name="method" value="Delete">
+                    <input type="submit" value="Delete" class="btn btn-danger">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock %}

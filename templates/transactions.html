@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+{% block body %}
+<br>
+<h1>Transactions</h1>
+<a class="btn btn-success" href="/issue_book">Issue Book</a>
+<hr>
+{% if transactions%}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Transaction ID</th>
+            <th>Book ID</th>
+            <th>Member ID</th>
+            <th>Per Day Renting Fee</th>
+            <th>Borrowed On</th>
+            <th>Returned On</th>
+            <th>Total Charge</th>
+            <th>Amount Paid</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for transaction in transactions %}
+        <tr>
+            <td>{{transaction.id}}</td>
+            <td>
+                <a href="book/{{transaction.book_id}}"
+                    class="btn btn-dark pull-right">{{"{:05d}".format(transaction.book_id)}}</a>
+            </td>
+            <td>
+                <a href="member/{{transaction.member_id}}"
+                    class="btn btn-dark pull-right">{{"{:03d}".format(transaction.member_id)}}</a>
+            </td>
+
+            <td>{{transaction.per_day_fee}}</td>
+            <td>{{transaction.borrowed_on}}</td>
+            <td>{{transaction.returned_on}}</td>
+            <td>{{transaction.total_charge}}</td>
+            <td>{{transaction.amount_paid}}</td>
+            {% if transaction.amount_paid=='-' %}
+            <td><a href="return_book/{{transaction.id}}" class="btn btn-danger pull-right">Return</a></td>
+            {% else %}
+            <td>CLOSED</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock %}

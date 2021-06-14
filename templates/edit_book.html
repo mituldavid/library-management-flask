@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+{% block body %}
+<br>
+<h1>Edit Book</h1>
+{% from "includes/_formhelpers.html" import render_field %}
+<form method="POST" action="">
+    <div class="form-group">
+        {{render_field(form.id, class_="form-control", value=book.id)}}
+    </div><br>
+    <div class="form-group">
+        {{render_field(form.title, class_="form-control", value=book.title)}}
+    </div><br>
+    <div class="form-group">
+        {{render_field(form.author, class_="form-control", value=book.author)}}
+    </div><br>
+    <div class="form-group">
+        {{render_field(form.average_rating, class_="form-control", value=book.average_rating)}}
+    </div><br>
+    <div class="form-group">
+        {{render_field(form.isbn, class_="form-control", value=book.isbn)}}
+    </div><br>
+    <div class="form-group">
+        {{render_field(form.isbn13, class_="form-control", value=book.isbn13)}}
+    </div><br>
+    <div class="form-group">
+        {{render_field(form.language_code, class_="form-control", value=book.language_code)}}
+    </div><br>
+    <div class="form-group">
+        {{render_field(form.num_pages, class_="form-control", value=book.num_pages)}}
+    </div><br>
+    <div class="form-group">
+        {{render_field(form.ratings_count, class_="form-control", value=book.ratings_count)}}
+    </div><br>
+    <div class="form-group">
+        {{render_field(form.text_reviews_count, class_="form-control", value=book.text_reviews_count)}}
+    </div><br>
+    <div class="form-group">
+        {{render_field(form.publication_date, class_="form-control", type="date", value=book.publication_date)}}
+    </div><br>
+    <div class="form-group">
+        {{render_field(form.publisher, class_="form-control", value=book.publisher)}}
+    </div><br>
+    <div class="form-group">
+        {{render_field(form.total_quantity, class_="form-control", value=book.total_quantity)}}
+    </div>
+    <br>
+    <p><button type="submit" class="btn btn-primary" value="Submit">Submit</button></p>
+</form>
+{% endblock %}

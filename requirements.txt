@@ -1,0 +1,6 @@
+Flask
+Flask-MySQLdb
+Flask-WTF
+requests
+urllib
+mysql.connector

@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+{% block body %}
+<br>
+{% if book %}
+<div class="d-flex justify-content-between">
+    <h2><b>Book Details:</b></h2>
+    <div><a href="{{url_for('edit_book', id=book.id)}}" class="btn btn-primary pull-right">Edit</a></div>
+</div>
+<h4 style="width: 80%;">{{book.title}}</h4>
+<p style="line-height: 3px;"><i>by {{book.author}}</i></p>
+<br>
+<hr>
+<table class="table table-left">
+    <tbody>
+        <tr>
+            <td>Book ID</td>
+            <td>{{book.id}}</td>
+            <td>Title</td>
+            <td>{{book.title}}</td>
+        </tr>
+        <tr>
+            <td>Author(s)</td>
+            <td>{{book.author}}</td>
+            <td>Average Rating</td>
+            <td>{{book.average_rating}}</td>
+        </tr>
+        <tr>
+            <td>ISBN</td>
+            <td>{{book.isbn}}</td>
+            <td>ISBN13</td>
+            <td>{{book.isbn13}}</td>
+        </tr>
+        <tr>
+            <td>Language</td>
+            <td>{{book.language_code}}</td>
+            <td>No. of Pages</td>
+            <td>{{book.num_pages}}</td>
+        </tr>
+        <tr>
+            <td>No. of Ratings</td>
+            <td>{{book.ratings_count}}</td>
+            <td>No. of Text Reviews</td>
+            <td>{{book.text_reviews_count}}</td>
+        </tr>
+        <tr>
+            <td>Publication Date</td>
+            <td>{{book.publication_date}}</td>
+            <td>Publisher</td>
+            <td>{{book.publisher}}</td>
+        </tr>
+        <tr>
+            <td>Total No. of Books</td>
+            <td>{{book.total_quantity}}</td>
+            <td>Books Available to Rent</td>
+            <td>{{book.available_quantity}}</td>
+        </tr>
+        <tr>
+            <td>Rented Count</td>
+            <td>{{book.rented_count}}</td>
+        </tr>
+    </tbody>
+</table>
+{% endif %}
+<style>
+    td {
+        padding: 15px !important;
+    }
+
+    td:nth-child(odd) {
+        font-weight: bold;
+    }
+</style>
+{% endblock %}

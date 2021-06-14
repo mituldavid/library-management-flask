@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+{% block body %}
+<br>
+<h1>Reports</h1>
+<hr>
+<br>
+{% if books%}
+<h3>Most Popular Books</h3>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Book ID</th>
+            <th>Title</th>
+            <th>Author(s)</th>
+            <th>Total No. of Books</th>
+            <th>Books Available to Rent</th>
+            <th>Rented Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr style="cursor:pointer;">
+            <td><a href="/book/{{book.id}}" class="btn btn-dark pull-right">{{"{:05d}".format(book.id)}}</a></td>
+            <td onclick="window.location='/book/{{book.id}}';">{{book.title}}</td>
+            <td onclick="window.location='/book/{{book.id}}';">{{book.author}}</td>
+            <td onclick="window.location='/book/{{book.id}}';">{{book.total_quantity}}</td>
+            <td onclick="window.location='/book/{{book.id}}';">{{book.available_quantity}}</td>
+            <td onclick="window.location='/book/{{book.id}}';">{{book.rented_count}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+{% if members%}
+<br>
+<h3>Highest Paying Customers</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Member ID</th>
+            <th>Name</th>
+            <th>Amount Spent</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for member in members %}
+        <tr>
+            <td>
+                <a href="member/{{member.id}}" class="btn btn-dark pull-right">{{"{:03d}".format(member.id)}}</a>
+            </td>
+            <td>{{member.name}}</td>
+            <td>{{member.amount_spent}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock %}

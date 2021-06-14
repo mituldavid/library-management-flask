@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% block body %}
+<br>
+<h1>Import Books Using Frappe API</h1>
+{% from "includes/_formhelpers.html" import render_field %}
+<form method="POST" action="">
+    <div class="form-group">
+        {{render_field(form.no_of_books, class_="form-control")}}
+    </div><br>
+    <div class="form-group">
+        {{render_field(form.quantity_per_book, class_="form-control")}}
+    </div><br>
+    <div class="form-group">
+        {{render_field(form.title, class_="form-control")}}
+    </div><br>
+    <div class="form-group">
+        {{render_field(form.author, class_="form-control")}}
+    </div><br>
+    <div class="form-group">
+        {{render_field(form.isbn, class_="form-control")}}
+    </div><br>
+    <div class="form-group">
+        {{render_field(form.publisher, class_="form-control")}}
+    </div><br>
+    <p><button type="submit" class="btn btn-primary" value="Submit">Submit</button></p>
+</form>
+{% endblock %}
